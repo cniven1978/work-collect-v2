@@ -1,0 +1,53 @@
+version: "3.8"
+
+# =============================================================
+# DailyHot API 一键部署
+# 用途：聚合国内35+平台热榜（微信/小红书/微博/知乎/B站等）
+# 项目地址：https://github.com/imsyy/DailyHotApi
+# =============================================================
+
+services:
+  dailyhot:
+    image: imsyy/dailyhot-api:latest
+    container_name: dailyhot
+    restart: always
+    ports:
+      - "6688:6688"     # 本地端口:容器端口，如有冲突可改左边的数字
+    environment:
+      - TZ=Asia/Shanghai
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:6688/"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+# =============================================================
+# 启动命令：
+#   cd docker && docker compose up -d
+#
+# 验证是否正常运行：
+#   curl http://localhost:6688/weixin    # 微信热文
+#   curl http://localhost:6688/xiaohongshu  # 小红书热榜
+#   curl http://localhost:6688/weibo    # 微博热搜
+#
+# 查看日志：
+#   docker logs -f dailyhot
+#
+# 停止：
+#   docker compose down
+#
+# 更新到最新版本：
+#   docker compose pull && docker compose up -d
+#
+# 支持的平台列表（部分）：
+#   weixin        微信公众号热文
+#   xiaohongshu   小红书热榜
+#   weibo         微博热搜
+#   zhihu         知乎热榜
+#   bilibili      B站热搜
+#   baidu         百度热搜
+#   toutiao       今日头条
+#   douyin        抖音热搜
+#   ifeng         凤凰网
+#   完整列表见：https://github.com/imsyy/DailyHotApi#支持列表
+# =============================================================
