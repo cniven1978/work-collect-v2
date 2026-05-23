@@ -1,0 +1,117 @@
+{
+  "version": "2.0",
+  "last_updated": "2026-05-23",
+  "note": "主配置已迁移至 config/sources.yaml，本文件保留用于向后兼容",
+  "sources": [
+    {
+      "id": "vbdata",
+      "name": "动脉网",
+      "url": "https://www.vbdata.cn",
+      "platform": "行业媒体",
+      "type": "website",
+      "added_at": "2026-04-05",
+      "added_by": "主人（左霖）",
+      "status": "active",
+      "note": "医疗器械行业媒体"
+    },
+    {
+      "id": "36kr",
+      "name": "36氪",
+      "url": "https://36kr.com",
+      "platform": "科技媒体",
+      "type": "website",
+      "added_at": "2026-04-05",
+      "added_by": "主人（左霖）",
+      "status": "active",
+      "note": "科技创业媒体"
+    },
+    {
+      "id": "qimingpian",
+      "name": "企名片",
+      "url": "https://www.qimingpian.com",
+      "platform": "投研平台",
+      "type": "website",
+      "added_at": "2026-04-05",
+      "added_by": "主人（左霖）",
+      "status": "active",
+      "note": "投资分析平台"
+    },
+    {
+      "id": "tonghuashun",
+      "name": "同花顺",
+      "url": "https://www.10jqka.com.cn",
+      "platform": "投研平台",
+      "type": "website",
+      "added_at": "2026-04-05",
+      "added_by": "主人（左霖）",
+      "status": "active",
+      "note": "投资分析平台"
+    },
+    {
+      "id": "medtalk",
+      "name": "MedTalkofVascular",
+      "url": "",
+      "platform": "微信公众号",
+      "type": "wechat",
+      "added_at": "2026-04-05",
+      "added_by": "主人（左霖）",
+      "status": "pending",
+      "note": "待补充微信公众号ID"
+    },
+    {
+      "id": "matrixlife",
+      "name": "矩阵生命观察",
+      "url": "",
+      "platform": "微信公众号",
+      "type": "wechat",
+      "added_at": "2026-04-05",
+      "added_by": "主人（左霖）",
+      "status": "active",
+      "note": "脑机接口、生命科学行业深度分析，行研质量高"
+    },
+    {
+      "id": "qixiezhijia",
+      "name": "器械之家",
+      "url": "",
+      "platform": "微信公众号",
+      "type": "wechat",
+      "added_at": "2026-04-06",
+      "added_by": "主人（左霖）",
+      "status": "pending",
+      "note": "医疗器械媒体报道先锋，专业分享医疗器械知识；待补充微信公众号ID"
+    },
+    {
+      "id": "xiaojudeng",
+      "name": "小桔灯网",
+      "url": "",
+      "platform": "微信公众号",
+      "type": "wechat",
+      "added_at": "2026-04-06",
+      "added_by": "主人（左霖）",
+      "status": "pending",
+      "note": "病理/检验/IVD领域专业媒体；待补充微信公众号ID"
+    },
+    {
+      "id": "linzhanggui",
+      "name": "林掌柜",
+      "url": "",
+      "platform": "微信公众号",
+      "type": "wechat",
+      "added_at": "2026-04-06",
+      "added_by": "主人（左霖）",
+      "status": "pending",
+      "note": "眼科和医疗服务、投融资；待补充微信公众号ID"
+    },
+    {
+      "id": "yigongchaoren",
+      "name": "医工超人",
+      "url": "",
+      "platform": "微信公众号",
+      "type": "wechat",
+      "added_at": "2026-04-06",
+      "added_by": "主人（左霖）",
+      "status": "pending",
+      "note": "超声行业专业媒体；待补充微信公众号ID"
+    }
+  ]
+}
