@@ -1,0 +1,163 @@
+# =============================================================
+# work-collect-v2 信息源配置
+# 修改后下次执行自动生效，无需重启
+# =============================================================
+
+# ---------------------------------------------------------------
+# DailyHot API 配置（国内平台聚合：微信/小红书/微博等）
+# 部署方式见 docker/docker-compose.yml
+# ---------------------------------------------------------------
+dailyhot:
+  base_url: "http://localhost:6688"  # 自部署实例地址
+  enabled: true
+  platforms:
+    - weixin        # 微信公众号热文
+    - xiaohongshu   # 小红书热榜
+    - weibo         # 微博热搜
+    - zhihu         # 知乎热榜
+    - bilibili      # B站热搜
+    - baidu         # 百度热搜
+    - toutiao       # 今日头条
+    - douyin        # 抖音热搜
+    - ifeng         # 凤凰网
+    # 如需添加更多平台，参考 DailyHot 文档，在此追加即可
+
+# ---------------------------------------------------------------
+# 订阅媒体（RSS / 网页抓取）
+# ---------------------------------------------------------------
+websites:
+  - id: vbdata
+    name: 动脉网
+    url: "https://www.vbdata.cn"
+    rss: "https://www.vbdata.cn/feed"   # 如有 RSS 优先用 RSS
+    platform: 行业媒体
+    category: 工作参考/医疗器械技术与行业
+    status: active
+    note: 医疗器械行业媒体
+
+  - id: 36kr
+    name: 36氪
+    url: "https://36kr.com"
+    rss: "https://36kr.com/feed"
+    platform: 科技媒体
+    category: 工作参考/投资分析
+    status: active
+    note: 科技创业媒体
+
+  - id: qimingpian
+    name: 企名片
+    url: "https://www.qimingpian.com"
+    rss: ""
+    platform: 投研平台
+    category: 工作参考/投资分析
+    status: active
+    note: 投资分析平台
+
+  - id: tonghuashun
+    name: 同花顺
+    url: "https://www.10jqka.com.cn"
+    rss: ""
+    platform: 投研平台
+    category: 工作参考/投资分析
+    status: active
+    note: 投资分析平台
+
+# ---------------------------------------------------------------
+# 微信公众号（via DailyHot 热榜 + 手动收藏）
+# status: pending 表示待通过 DailyHot 或手动补充
+# ---------------------------------------------------------------
+wechat:
+  - id: medtalk
+    name: MedTalkofVascular
+    wechat_id: ""       # 公众号原始ID，待补充
+    platform: 微信公众号
+    category: 工作参考/医疗器械技术与行业
+    status: pending
+    note: 待补充微信公众号ID
+
+  - id: matrixlife
+    name: 矩阵生命观察
+    wechat_id: ""
+    platform: 微信公众号
+    category: 工作参考/医疗器械技术与行业
+    status: active
+    note: 脑机接口、生命科学行业深度分析
+
+  - id: qixiezhijia
+    name: 器械之家
+    wechat_id: ""
+    platform: 微信公众号
+    category: 工作参考/医疗器械技术与行业
+    status: pending
+    note: 医疗器械媒体报道先锋
+
+  - id: xiaojudeng
+    name: 小桔灯网
+    wechat_id: ""
+    platform: 微信公众号
+    category: 工作参考/医疗器械技术与行业
+    status: pending
+    note: 病理/检验/IVD领域专业媒体
+
+  - id: linzhanggui
+    name: 林掌柜
+    wechat_id: ""
+    platform: 微信公众号
+    category: 工作参考/医疗器械技术与行业
+    status: pending
+    note: 眼科和医疗服务、投融资
+
+  - id: yigongchaoren
+    name: 医工超人
+    wechat_id: ""
+    platform: 微信公众号
+    category: 工作参考/医疗器械技术与行业
+    status: pending
+    note: 超声行业专业媒体
+
+# ---------------------------------------------------------------
+# X / Twitter（via Nitter RSS）
+# 多个 Nitter 实例做容灾，自动切换
+# ---------------------------------------------------------------
+x_twitter:
+  enabled: true
+  nitter_instances:           # Nitter 公共实例列表，自动容灾切换
+    - "https://nitter.net"
+    - "https://nitter.privacydev.net"
+    - "https://nitter.poast.org"
+    - "https://bird.trom.tf"
+
+  accounts:                   # 监控的固定账号（填 X 用户名，不含@）
+    # 示例，请替换为你实际关注的账号：
+    # - elonmusk
+    # - OpenAI
+    # - sama
+    # 添加方式：在此列表追加一行 "- 用户名" 即可
+
+  keywords:                   # 关键词追踪（X 搜索）
+    # 示例，请替换为你实际追踪的关键词：
+    # - "medical device AI"
+    # - "medtech investment"
+    # 添加方式：在此列表追加一行即可
+
+# ---------------------------------------------------------------
+# YouTube（via 官方 RSS，无需 API Key）
+# RSS 格式：https://www.youtube.com/feeds/videos.xml?channel_id=频道ID
+# ---------------------------------------------------------------
+youtube:
+  enabled: true
+  channels:                   # 订阅的 YouTube 频道 ID 列表
+    # 示例，请替换为你实际订阅的频道：
+    # - UCxxxxxxxxxxxxxxxxxxxxxx
+    # - UCyyyyyyyyyyyyyyyyyyyyyy
+    # 添加方式：在此列表追加频道ID即可
+    # 如何获取频道ID：打开频道页 → 右键查看源代码 → 搜索 "channel_id"
+
+# ---------------------------------------------------------------
+# 热点追踪配置
+# ---------------------------------------------------------------
+trend:
+  mode: incremental           # current / incremental / digest
+  top_n: 20                   # 每平台取前 N 条热点
+  min_score: 0                # 最低热度门槛（0表示不过滤）
+  dedup_window_hours: 24      # 去重窗口（小时），避免同一热点重复推送
